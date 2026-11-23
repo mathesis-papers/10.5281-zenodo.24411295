@@ -1,0 +1,66 @@
+{
+  "files": {
+    "pdf": {
+      "bytes": 110190,
+      "matches_public": true,
+      "path": "paper.pdf",
+      "public_sha256": "f526e6a779f00e15324b4c0a60978a9ec235aa8f6c995b1f75c4dae7b60609fa",
+      "sha256": "f526e6a779f00e15324b4c0a60978a9ec235aa8f6c995b1f75c4dae7b60609fa"
+    },
+    "source": {
+      "bytes": 17381,
+      "matches_public": true,
+      "path": "source.archive",
+      "public_sha256": "d073bb3147f50e67917b7a4f0d55bad4a14d1184a924f62cd43af25f2b301288",
+      "sha256": "d073bb3147f50e67917b7a4f0d55bad4a14d1184a924f62cd43af25f2b301288"
+    }
+  },
+  "source_identity": "Mathesis public projection",
+  "work": {
+    "abstract_text": "We prove R. J. Mathar's 'Conjecture D-finite with recurrence' in the third FORMULA line of OEIS A392976, revision 19 (January 31, 2026; conjecture dated January 29, 2026), and extend the cubic coefficient identities proved by Barry (2011, Theorem 3 and Example 7). The coefficients of the formal inverse of t((1-t^2)^2-t), divided by x, satisfy the stated six-term recurrence at every integer n >= 5. A change of variable reduces the assertion to an explicit polynomial identity. The same argument gives a nonzero homogeneous differential equation of order five; a trace argument lowers the existence bound to order four. Lagrange inversion gives an integer-exponent family containing the entry's binomial-sum formula and its three cross-referenced sequences, as well as all positive integral powers of their generating functions. Further corollaries cover the cubic entry's alternate sum, differential recurrence and derivative formulas.",
+    "authors": [
+      {
+        "affiliation": "ChronoAI Pte Ltd, Singapore",
+        "name": "Haobo Ma"
+      },
+      {
+        "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+        "name": "Wenlin Zhang"
+      }
+    ],
+    "concept_doi": "10.5281/zenodo.24411295",
+    "current_version": 2,
+    "doi": "10.5281/zenodo.24411296",
+    "lean_source": {
+      "revision": "2b5b552e72596710282b713f6587c7020544535d",
+      "url": "https://github.com/the-omega-institute/trureturing/blob/2b5b552e72596710282b713f6587c7020544535d/D5/S1/Recurrence/Algebraic/A392976InverseRecurrence.lean"
+    },
+    "license": "CC-BY-4.0",
+    "msc": [],
+    "pdf": {
+      "bytes": 110190,
+      "sha256": "f526e6a779f00e15324b4c0a60978a9ec235aa8f6c995b1f75c4dae7b60609fa",
+      "url": "/api/v1/collected-papers/oeis-a392976-inverse-recurrence/files/pdf?version=2"
+    },
+    "previous_version": null,
+    "publication": "public",
+    "published_on": "2026-11-23T05:40:02.127157100Z",
+    "record": "oeis-a392976-inverse-recurrence",
+    "repository_name": "10.5281-zenodo.24411295",
+    "source": {
+      "bytes": 17381,
+      "sha256": "d073bb3147f50e67917b7a4f0d55bad4a14d1184a924f62cd43af25f2b301288",
+      "url": "/api/v1/collected-papers/oeis-a392976-inverse-recurrence/files/source?version=2"
+    },
+    "title": "Mathar's inverse-quintic recurrence conjecture and extensions of Barry's cubic formulas",
+    "versions": [
+      {
+        "previous_version": null,
+        "published_on": "2026-11-23T05:40:02.127157100Z",
+        "revision": "2",
+        "version": 2
+      }
+    ],
+    "work": "oeis-a392976-inverse-recurrence"
+  }
+}

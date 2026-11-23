@@ -1,0 +1,11 @@
+{
+  "schema": "mathesis.materials.v1",
+  "work": "oeis-a392976-inverse-recurrence",
+  "version": 2,
+  "repository_url": "https://github.com/mathesis-papers/10.5281-zenodo.24411295",
+  "site_url": "https://papers.trureturing.org/10.5281-zenodo.24411295/",
+  "doi": "10.5281/zenodo.24411296",
+  "reading": {},
+  "slides": [],
+  "visualizations": []
+}

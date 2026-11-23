@@ -1,0 +1,503 @@
+\documentclass[10pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[hidelinks,breaklinks]{hyperref}
+\allowdisplaybreaks[1]
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\coeff}[2]{[#1^{#2}]}
+\title{Mathar's inverse-quintic recurrence conjecture\\
+and extensions of Barry's cubic formulas}
+\author{Haobo Ma\\\small ChronoAI Pte Ltd, Singapore
+\and Wenlin Zhang\\\small National University of Singapore\\\small ChronoAI Pte Ltd, Singapore}
+\date{November 14, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We prove R.\ J.\ Mathar's ``Conjecture D-finite with recurrence'' in the third
+FORMULA line of OEIS A392976, revision 19 (January 31, 2026; conjecture dated
+January 29, 2026), and extend the cubic coefficient identities proved by
+Barry (2011, Theorem 3 and Example 7). The coefficients of the formal inverse of
+$t((1-t^2)^2-t)$, divided by $x$, satisfy the stated six-term recurrence at
+every integer $n\geq5$. A change of variable reduces the assertion to an
+explicit polynomial identity. The same argument gives a nonzero homogeneous
+differential equation of order five; a trace argument lowers the existence
+bound to order four. Lagrange inversion gives an integer-exponent
+family containing the entry's binomial-sum formula and its three cross-referenced
+sequences, as well as all positive integral powers of their generating functions.
+Further corollaries cover the cubic entry's alternate sum, differential recurrence,
+and derivative formulas.
+\end{abstract}
+
+\section{The conjecture and its exact recurrence}
+
+Let
+\[
+ f(t)=t((1-t^2)^2-t)=t-t^2-2t^3+t^5.
+\]
+Since $f(0)=0$ and $f'(0)=1$, there is a unique $U\in x\Q[[x]]$
+with $f(U(x))=x$; it also satisfies $U(f(t))=t$. Put
+\[
+ A(x)=U(x)/x=\sum_{n\geq0}a_nx^n.
+\]
+This is Seiichi Manyama's sequence A392976. Its third FORMULA line credits
+the recurrence conjecture to R.\ J.\ Mathar~\cite{oeis}.
+We prove that conjecture below by transporting a differential operator
+through the inverse. Barry's earlier coefficient argument for the cubic
+inverse~\cite[Theorem 3 and Example 7]{barry} is the $r=1$ case of the
+family in Section~3. Schuetz and Whieldon~\cite[Theorem 1.9 and Section 3]{sw}
+and Birmajer, Gil and Weiner~\cite[Section 4]{bgw} also prove the
+cubic polygon-dissection formulas; none of these results asserts Mathar's
+specific quintic recurrence.
+Liszewska and M\l{}otkowski~\cite[Proposition 6.1, equation (19)]{lm}
+give a further Lagrange-inversion proof of the cubic coefficient formula.
+The source's offset is zero. It specifies no recurrence onset: $n\geq5$
+is the range in which all six sequence arguments are nonnegative.
+
+Write the six signed coefficient polynomials as follows:
+\begin{align*}
+c_0(z)={}&283z(z-1)(z-2)(83022305213z-178385058984)(z+1),\\
+c_1(z)={}&-6z(z-1)(z-2)\bigl(12196786904129z^2\\*
+ &\hspace{36mm}-45110300936020z+52641391340361\bigr),\\
+c_2(z)={}&-6(z-1)(z-2)\bigl(67790996421377z^3\\*
+ &\hspace{22mm}-248299346995054z^2+202497447227007z\\*
+ &\hspace{22mm}+3061418504418\bigr),\\
+c_3(z)={}&-2(z-2)\bigl(192167357944360z^4-559010679688491z^3\\*
+ &\hspace{22mm}-2120668219560541z^2+9123363136130610z\\*
+ &\hspace{22mm}-8342981628089220\bigr),\\
+c_4(z)={}&5\bigl(15640122296875z^5-565964885220500z^4\\*
+ &\hspace{12mm}+4989857715427325z^3-18667678380008380z^2\\*
+ &\hspace{12mm}+32085126156301848z-20925325629575136\bigr),\\
+c_5(z)={}&10(5z-17)(5z-18)(5z-21)(5z-19)\\*
+ &\hspace{12mm}\cdot(22509687685z-60308240636).
+\end{align*}
+
+\begin{theorem}\label{thm:main}
+For every integer $n\geq5$,
+\begin{equation}\label{eq:rec}
+ \sum_{k=0}^{5}c_k(n)a_{n-k}=0.
+\end{equation}
+The series $A$ is D-finite: it satisfies a homogeneous linear differential
+equation with polynomial coefficients, not all zero, of order five.
+Together with $a_0,\ldots,a_4=1,1,4,15,67$, equation~\eqref{eq:rec}
+uniquely determines the sequence.
+\end{theorem}
+
+\section{Proof by a polynomial identity}
+
+Algebraic series are D-finite~\cite[Theorem 2.1]{stanley}, so existence
+of some differential equation already follows from $f(U)=x$. The point
+here is to verify the six particular polynomials in Mathar's conjecture.
+The denominator-clearing method is the inverse-variable Euler form of
+the algebraic differentiation procedure described by
+Bostan et al.~\cite[Section 2.1]{bostan}.
+
+Set $\theta=x\,d/dx$ and define
+\[
+ L_A=\sum_{k=0}^{5}x^kc_k(\theta+k),\qquad
+ L_U=\sum_{k=0}^{5}x^kc_k(\theta+k-1).
+\]
+Here $x^k$ multiplies on the left; the polynomial in $\theta$ acts first.
+The identity $\theta(xB)=x(\theta+1)B$ implies
+\begin{equation}\label{eq:shift}
+ L_U(xB)=xL_AB.
+\end{equation}
+We prove $L_UU=0$ after composing with $f$.
+
+Let $H(t)=f'(t)=1-2t-6t^2+5t^4$, a unit in $\Q[[t]]$. The formal
+chain rule gives
+\begin{equation}\label{eq:transport}
+ (\theta B)(f(t))=\frac{f(t)}{H(t)}\frac{d}{dt}B(f(t)).
+\end{equation}
+Define polynomials $N_0=t$, $N_1=f$, and, for $1\leq j\leq4$,
+\begin{equation}\label{eq:num}
+ N_{j+1}=f\bigl(HN_j'-(2j-1)H'N_j\bigr).
+\end{equation}
+Since $U(f(t))=t$, induction using~\eqref{eq:transport} proves
+\[
+ (\theta^jU)(f(t))=\frac{N_j(t)}{H(t)^{2j-1}}
+ \quad(1\leq j\leq5).
+\]
+For example $N_1=t-t^2-2t^3+t^5$ and
+\[
+ N_2=t-3t^2+2t^3+10t^4-9t^5-18t^6-12t^7
+       +12t^8+23t^9-3t^{10}-18t^{11}+5t^{13}.
+\]
+Define integers $w_{kj}$ by
+\begin{equation}\label{eq:weights}
+ c_k(z+k-1)=\sum_{j=0}^{5}w_{kj}z^j.
+\end{equation}
+The required finite identity in $\Z[t]$ is
+\begin{equation}\label{eq:certificate}
+ \sum_{k=0}^{5}f(t)^k
+ \left(w_{k0}tH(t)^9+
+       \sum_{j=1}^{5}w_{kj}N_j(t)H(t)^{10-2j}\right)=0.
+\end{equation}
+All its ingredients are specified by the displayed $c_k$, $f$, $H$ and
+recursion~\eqref{eq:num}. Expanding them gives the zero polynomial;
+\texttt{verify.py} checks every coefficient by integer arithmetic.
+Thus~\eqref{eq:certificate} proves
+$H^9(L_UU)(f(t))=0$. Since $H$ is a unit, $(L_UU)(f(t))=0$.
+Composition with $U$ gives $L_UU=0$. Equation~\eqref{eq:shift} and
+$U=xA$ now imply $xL_AA=0$, hence $L_AA=0$.
+
+Since $\theta x^m=mx^m$, the coefficient of $x^n$ in
+$x^kc_k(\theta+k)A$ is $c_k(n)a_{n-k}$ whenever $n\geq k$.
+Extracting coefficients of $L_AA=0$ proves~\eqref{eq:rec}
+for every $n\geq5$, not just for a finite initial segment.
+
+Each $c_k$ has degree five. Expanding powers of $\theta$ in ordinary
+derivatives shows that the coefficient of $d^5/dx^5$ in $L_A$ is
+\begin{align*}
+ x^5\bigl(&23495312375279-73180721424774x
+ -406745978528262x^2\\
+ &-384334715888720x^3+78200611484375x^4
+ +140685548031250x^5\bigr).
+\end{align*}
+It is nonzero, proving D-finiteness. Finally $c_0(n)>0$ for every $n\geq5$,
+so~\eqref{eq:rec} determines each new term from its five predecessors.
+The first five coefficients follow by recursive inversion of $f$.
+This completes the proof of Theorem~\ref{thm:main}.
+
+\begin{corollary}\label{cor:order}
+The series $A$ also satisfies a nonzero homogeneous linear differential
+equation over $\Q[x]$ of order at most four.
+\end{corollary}
+\begin{proof}
+The polynomial $f(T)-x$ is irreducible over $\Q(x)$: it is primitive,
+and its quotient ring over $\Q[x,T]$ is $\Q[T]$, an integral domain.
+Gauss's lemma then applies. Thus $K=\Q(x,U)$ has degree five over
+$\Q(x)$. The coefficient of $T^4$ in $f(T)-x$ is zero, so
+$\operatorname{Tr}_{K/\Q(x)}U=0$, and the same holds for $A=U/x$.
+In characteristic zero, differentiation extends uniquely to every finite
+algebraic extension. Consequently it commutes with the embeddings defining
+the trace, so every derivative of $A$ has trace zero. Since the trace of
+$1$ is $5$, the trace-zero subspace has dimension four. The five elements
+$A,A',\ldots,A^{(4)}$ are linearly dependent over $\Q(x)$.
+Clearing denominators gives the stated equation. This is an existence
+bound, not a claim that the displayed order-five operator has order four.
+\end{proof}
+
+\section{Generating functions and neighboring formulas}
+
+The defining equation $f(U)=x$ immediately yields the other generating-function
+identity in A392976:
+\begin{equation}\label{eq:gf}
+ A(x)=\frac{1}{(1-(xA(x))^2)^2-xA(x)}.
+\end{equation}
+Its binomial formula is a specialization of the following calculation.
+
+\begin{corollary}\label{cor:family}
+Let $r$ be any integer, let $U_r$ be the zero-constant inverse of
+$f_r(t)=t((1-t^2)^r-t)$, and write $U_r(x)/x=\sum_{n\geq0}a_n^{(r)}x^n$.
+For integers $n\geq0$ and $s\geq1$,
+\begin{equation}\label{eq:powers}
+ [x^n](U_r(x)/x)^s=\frac{s}{n+s}
+ \sum_{k=0}^{\lfloor n/2\rfloor}
+ \binom{2n+s-2k-1}{n-2k}
+ (-1)^k\binom{-r(2n+s-2k)}{k}.
+\end{equation}
+Here $\binom{b}{k}=b(b-1)\cdots(b-k+1)/k!$ for any integer $b$,
+and $\binom{b}{0}=1$. In particular, for $r\geq1$,
+\begin{equation}\label{eq:family}
+ a_n^{(r)}=\frac{1}{n+1}\sum_{k=0}^{\lfloor n/2\rfloor}
+ \binom{2n-2k}{n}\binom{r(2n-2k+1)+k-1}{k}.
+\end{equation}
+All $a_n^{(r)}$ are integers, and they are strictly positive when $r\geq0$.
+Every $U_r/x$ is algebraic and D-finite. The cases $r=1,2,3,-1$ give,
+respectively, A001002, A392976, A392977 and A370839.
+\end{corollary}
+
+\begin{proof}
+Put $\phi_r(t)=((1-t^2)^r-t)^{-1}$. This is a formal series with
+constant coefficient one, also when $r<0$. Lagrange inversion
+\cite[Theorem 2.1.1, equation (2.1.1)]{gessel} gives
+\begin{equation}\label{eq:lagrange}
+ a_n^{(r)}=\frac{1}{n+1}[t^n]\phi_r(t)^{n+1}.
+\end{equation}
+Indeed $U_r=x\phi_r(U_r)$, so the cited formula applies over $\Q[[x]]$
+with a unit constant term. One may obtain the same identity by the formal
+residue substitution $x=f_r(t)$ and the fact that a Laurent derivative has
+zero residue.
+The binomial expansion is
+\[
+ \phi_r(t)^{n+1}=\sum_{j\geq0}\binom{n+j}{j}
+ t^j(1-t^2)^{-r(n+1+j)}.
+\]
+Only $j=n-2k$ contributes to $[t^n]$. Expanding the last factor gives
+\eqref{eq:family}. More generally the power form of Lagrange inversion is
+$[x^{n+s}]U_r^s=\frac{s}{n+s}[t^n]\phi_r(t)^{n+s}$.
+Expanding first in $t(1-t^2)^{-r}$ and then in $t^2$ gives
+\eqref{eq:powers}; thus the formula is valid for negative and zero $r$ as
+well. Equation~\eqref{eq:family} is exactly the published sum in A392976 and A392977
+\cite{oeis,oeis3}. For $r=1$ its summand equals
+$\binom{2n-k}{n+k}\binom{n+k}{k}$, the formula in A001002~\cite{oeis1}.
+The ring $\Z[[t]]$ contains $(1-t^2)^r$ and its unit reciprocal,
+so coefficient recursion in $U_r=x\phi_r(U_r)$ proves integrality for every
+integer $r$. For $r\geq1$, $\phi_r$ has nonnegative coefficients, and the
+$k=0$ summand of~\eqref{eq:family} is positive. For $r=0$ one obtains
+$a_n^{(0)}=\binom{2n}{n}/(n+1)>0$.
+
+To prove the final assertion, clear the power of $1-U_r^2$ from
+$f_r(U_r)=x$. This gives a nonzero polynomial relation over $\Q(x)$,
+of degree at most $2r+1$ in $U_r$ for $r\geq1$, degree two for $r=0$,
+and degree $2|r|+2$ for $r<0$. In characteristic zero the finite extension
+$K=\Q(x,U_r)$ is closed under differentiation: differentiating a minimal
+polynomial expresses $U_r'$ in $K$, since that polynomial is separable.
+All derivatives of $U_r/x$ therefore lie in $K$. More than $[K:\Q(x)]$
+of them are linearly dependent over $\Q(x)$; clearing denominators gives
+a nonzero homogeneous polynomial-coefficient differential equation.
+\end{proof}
+
+\begin{corollary}\label{cor:signed}
+For A370839 the coefficient formula is
+\[
+ a_n^{(-1)}=\frac{1}{n+1}
+ \sum_{k=0}^{\lfloor n/2\rfloor}(-1)^k
+ \binom{2n-2k}{n-2k}\binom{2n-2k+1}{k}.
+\]
+The generating functions of A392977 and A370839 satisfy
+$A_r=1/((1-(xA_r)^2)^r-xA_r)$ with $r=3,-1$, respectively.
+\end{corollary}
+\begin{proof}
+Set $r=-1$, $s=1$ in~\eqref{eq:powers}. This proves the formula in
+A370839~\cite{oeism1}. Substituting $U_r=xA_r$ in $f_r(U_r)=x$
+proves both generating-function identities. In particular $a_4^{(-1)}=-5$:
+strict positivity for this signed specialization is not asserted in the source.
+\end{proof}
+
+\begin{corollary}\label{cor:cubic}
+Let $B=U_1/x=\sum_{n\geq0}b_nx^n$, the generating function of A001002.
+Then
+\begin{align}
+ B&=1+xB^2+x^2B^3,\\
+ b_n&=\frac1{n+1}\sum_{j=\lceil n/2\rceil}^n
+       \binom{n+j}{j}\binom{j}{n-j},\\
+ 5n(n+1)b_n&=11n(2n-1)b_{n-1}
+       +3(3n-2)(3n-4)b_{n-2}\quad(n\geq2).\label{eq:cubicrec}
+\end{align}
+For $g(x)=x^2+x^3$ and $D=d/dx$ its two derivative representations are
+\begin{align}
+ B&=1+\frac1x\sum_{m\geq1}\frac{D^{m-1}g(x)^m}{m!},\\
+ B&=\exp\left(\sum_{m\geq1}\frac{D^{m-1}(g(x)^m/x)}{m!}\right).
+\end{align}
+These are identities in $\Q[[x]]$; each coefficient receives finitely many terms.
+\end{corollary}
+\begin{proof}
+The inverse equation is $U_1=x+U_1^2+U_1^3$, giving the first identity.
+Expand $(1-t-t^2)^{-n-1}$ as
+$\sum_{j\geq0}\binom{n+j}{j}t^j(1+t)^j$ in~\eqref{eq:lagrange}.
+This gives Len Smiley's alternate sum in A001002, also proved in
+Barry~\cite[Example 7]{barry}. Replacing $j$ by $n-k$ identifies it
+term by term with Hanna's sum.
+
+For~\eqref{eq:cubicrec}, use the proof of Theorem~\ref{thm:main} with
+$f_1=t-t^2-t^3$, $H_1=1-2t-3t^2$ and the three signed polynomials
+$5z(z+1)$, $-11z(2z-1)$, $-3(3z-2)(3z-4)$.
+For the shifted operator on $U_1$, the numerators of its first two Euler
+iterates are $f_1$ and $f_1(H_1f_1'-H_1'f_1)$.
+Multiplication by $H_1^3$ gives $-f_1^2H_1^3$; equivalently the
+corresponding operators satisfy $L_{U_1}U_1=-x^2$ and $L_BB=-x$.
+The accompanying integer checker verifies the polynomial identity, and
+coefficient extraction proves the recurrence for every $n\geq2$.
+This reproves the recurrence
+attributed to Smiley in A001002~\cite{oeis1}.
+
+Finally introduce a parameter $z$ and solve $V=x+zg(V)$.
+The Lagrange--B\"urmann expansion at $x$ is
+$F(V)=F(x)+\sum_{m\geq1}z^mD^{m-1}(F'(x)g(x)^m)/m!$
+\cite[Section 2.1]{gessel}. Take $F(t)=t$ for the first representation,
+and $F(t)=\log t$ for the second after subtracting $\log x$.
+All resulting terms in the latter difference have positive $x$-adic
+order, so exponentiation and $z=1$ are legitimate. These are Hanna's
+two derivative formulas in A001002.
+\end{proof}
+
+\begin{corollary}\label{cor:reciprocal}
+Put $C=1/B=\sum_{n\geq0}d_nx^n$ and
+$\ell_n=[x^n]xB'/B$ for $n\geq1$. Then
+\begin{align}
+ b_n&=-\sum_{i=1}^n d_i b_{n-i} &&(n\geq1),\\
+ b_n&=-\sum_{i=1}^{n+2}d_i d_{n+2-i} &&(n\geq0),\\
+ \ell_n&=[t^n](1-t-t^2)^{-n} &&(n\geq1),\\
+ b_n&=\frac1{n+1}\binom{2n}{n}
+ {}_2F_1\!\left(-\frac n2,\frac{1-n}2;-2n;-4\right) &&(n\geq1).
+\end{align}
+The hypergeometric expression means the finite sum through
+$k=\lfloor n/2\rfloor$ with summand
+$(-n/2)_k((1-n)/2)_k(-4)^k/((-2n)_k k!)$;
+$(a)_k=a(a+1)\cdots(a+k-1)$ and $(a)_0=1$.
+The coefficients $d_n$ form A217596, and the $\ell_n$ form A213684.
+\end{corollary}
+\begin{proof}
+From $BC=1$ one obtains the first convolution. The cubic equation gives
+$C=1-xB-x^2B^2$, hence $C^2=C-x-x^2B$. Comparing degree $n+2$
+gives the second convolution, since the two endpoint terms of $C^2$
+are $2d_{n+2}$. These are the two reciprocal-sequence formulas in
+A001002~\cite{oeis1,reciprocal}.
+
+Write $\phi(t)=(1-t-t^2)^{-1}$. The Lagrange--B\"urmann formula gives
+$[x^n]\log B=\frac1n[t^{n-1}]\phi'(t)\phi(t)^{n-1}
+=\frac1n[t^n]\phi(t)^n$. Multiplication by $n$ proves the third identity,
+including its index convention~\cite{logderivative}.
+Finally the $r=1$ summand in~\eqref{eq:family} is
+$(2n-k)!/(n!k!(n-2k)!)$. Dividing its value by $\binom{2n}{n}$
+gives the displayed terminating hypergeometric summand, proving
+Luschny's expression in A001002~\cite{oeis1}.
+\end{proof}
+
+The antidiagonal assertion in A001002 follows as well: if
+$F(x,y)=1+xF(x,y)^2+xyF(x,y)^3$ with constant term one, substitution
+$y=x$ gives $F(x,x)=B(x)$ by coefficient recursion. Barry's Bell-matrix
+identity $[t^n]\phi(t)^{n+1}=(n+1)[x^{n+1}]U(x)$
+\cite[Theorem 3]{barry} is precisely~\eqref{eq:lagrange}, not an
+additional unproved transform.
+
+The cubic's real branch near $x=0$ is
+\[
+ B(x)=\frac{4\sin\!\left(\frac13\arcsin\frac{27x+11}{16}\right)-1}{3x},
+\]
+with its removable value $B(0)=1$. Indeed, writing
+$v=(4\sin\alpha-1)/3$ gives $v-v^2-v^3=(16\sin3\alpha-11)/27$.
+At $x=0$ the displayed branch has $v=0$ and derivative one, so formal
+inverse uniqueness proves the identity. This agrees with the OEIS formula;
+the denominator printed inside the arcsine in Barry's Example 7 is $6$,
+which must be $16$ for this inverse.
+
+The exact minimal differential order and the minimal recurrence order
+for A392976 are not determined here; Corollary~\ref{cor:order} gives
+the stronger differential-order bound four.
+
+\section{Coverage and verification}
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.27\linewidth}p{0.64\linewidth}@{}}
+\toprule
+Source statement & Mathematical coverage\\
+\midrule
+A392976, FORMULA 3 & Proved: Theorem~\ref{thm:main}, exact recurrence for $n\geq5$
+and D-finiteness.\\
+A392976, FORMULAS 1--2 & Proved: equation~\eqref{eq:gf} and
+Corollary~\ref{cor:family} with $r=2$: written proofs.\\
+A392977, FORMULAS 1--2 & Proved: same generating-function argument and
+Corollary~\ref{cor:family} with $r=3$: written proofs.\\
+A001002, binomial formula & Reproved; prior proof Barry (2011), Example 7;
+Corollary~\ref{cor:family} with $r=1$:
+reproof of the published formula.\\
+A001002, polynomial identity, recurrence, derivative forms, antidiagonals
+& Reproved: Corollary~\ref{cor:cubic} and the following substitution;
+attributions to Smiley and Hanna retained.\\
+A001002, trigonometric formula & Proved as stated in OEIS; the $6$ in
+Barry's Example 7 is corrected to $16$ above.\\
+A001002, polygon interpretation & Prior proof cited:
+Schuetz--Whieldon (2014), Theorem 1.9; Birmajer--Gil--Weiner (2015), Section 4.\\
+Integer $r$, positive powers & Not posed; proved in
+Corollary~\ref{cor:family}. Algebraicity, D-finiteness and integrality
+hold for every integer $r$; positivity holds for $r\geq0$.\\
+Quintic differential order & Not posed; proved: the trace argument in
+Corollary~\ref{cor:order} gives order at most four.\\
+A001002, reciprocal convolutions, logarithmic derivative, hypergeometric form
+& Proved: Corollary~\ref{cor:reciprocal}; published formulas reproved.\\
+A001002, remaining identities and interpretations & Not covered:
+parking functions, infinite product and asymptotic formula.\\
+A370839, FORMULA & Proved: Corollary~\ref{cor:signed},
+reproof of the published formula.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The \href{https://github.com/the-omega-institute/trureturing/blob/2b5b552e72596710282b713f6587c7020544535d/D5/S1/Recurrence/Algebraic/A392976InverseRecurrence.lean}{pinned Lean file}~\cite{lean} uses the namespace
+\begin{quote}\ttfamily
+D5.S1.Recurrence.Algebraic.A392976InverseRecurrence
+\end{quote}
+Its theorem \texttt{result} proves both inverse compositions, uniqueness of the zero-constant right
+inverse, $xA=U$, homogeneous D-finiteness, and the exact recurrence for every
+natural index $n\geq5$. These indices represent all integers in the theorem's
+range. Its definitions of $f$, $U$, $A$ and $a$ agree with those above.
+The initial five coefficient values, their determination of later terms,
+the trace-zero order bound, all binomial-sum formulas, the integer-parameter family and the cubic
+corollaries have written proofs here; they are not additional conjuncts of
+\texttt{result}. The declaration \texttt{polynomial\_certificate}
+in the same pinned file is the quintic polynomial identity, and
+\texttt{normal\_form} identifies an order-five operator with a nonzero
+fifth-derivative coefficient. The accompanying integer-polynomial checker verifies
+\eqref{eq:certificate}; it also compares coefficient formulas with recursive
+reversion on a finite range specified in \texttt{verification.json}.
+The universal recurrence follows from the polynomial identity and the
+formal-series argument, rather than extrapolation from those comparisons.
+
+\begin{thebibliography}{99}
+\bibitem{stanley}
+R.\ P.\ Stanley, \emph{Differentiably finite power series},
+European J.\ Combin.\ \textbf{1} (1980), 175--188, Theorem 2.1, p.\ 178.
+\href{https://math.mit.edu/~rstan/pubs/pubfiles/45.pdf}{Author-hosted full text}.
+\bibitem{bostan}
+A.\ Bostan, F.\ Chyzak, B.\ Salvy, G.\ Lecerf and \'E.\ Schost,
+\emph{Differential equations for algebraic functions}, ISSAC '07 (2007),
+25--32, Section 2.1.
+\href{https://arxiv.org/abs/cs/0703121v2}{arXiv:cs/0703121v2}.
+\bibitem{barry}
+P.\ Barry, \emph{On the Central Coefficients of Bell Matrices},
+J.\ Integer Seq.\ \textbf{14} (2011), Article 11.4.3,
+Theorem 3 and Example 7, pp.\ 3--4 and 6--7.
+\href{https://cs.uwaterloo.ca/journals/JIS/VOL14/Barry3/barry132.pdf}{Full text}.
+\bibitem{lm}
+E.\ Liszewska and W.\ M\l{}otkowski, \emph{Some relatives of the Catalan sequence},
+\href{https://arxiv.org/abs/1907.10725v1}{arXiv:1907.10725v1} (2019),
+Proposition 6.1, equation (19), and Section 9.3.
+\bibitem{reciprocal}
+V.\ Kruchinin and contributors, \emph{A217596}, OEIS, revision 63,
+July 29, 2025.
+\href{https://github.com/oeis/oeisdata/blob/4c6abcdf8b00fd262030066ebfced671457e5b43/seq/A217/A217596.seq}{Pinned entry}.
+\bibitem{logderivative}
+P.\ D.\ Hanna and contributors, \emph{A213684}, OEIS, revision 46,
+November 5, 2025.
+\href{https://github.com/oeis/oeisdata/blob/4c6abcdf8b00fd262030066ebfced671457e5b43/seq/A213/A213684.seq}{Pinned entry}.
+\bibitem{sw}
+A.\ Schuetz and G.\ Whieldon, \emph{Polygonal Dissections and Reversions of Series},
+\href{https://arxiv.org/abs/1401.7194v1}{arXiv:1401.7194v1} (2014),
+Theorem 1.9 and Section 3, pp.\ 8--10.
+\bibitem{bgw}
+D.\ Birmajer, J.\ B.\ Gil and M.\ D.\ Weiner,
+\emph{Colored partitions of a convex polygon by noncrossing diagonals},
+\href{https://arxiv.org/abs/1503.05242v1}{arXiv:1503.05242v1} (2015),
+Section 4, p.\ 5.
+\bibitem{oeis}
+S.\ Manyama, R.\ J.\ Mathar and contributors,
+\emph{A392976}, The On-Line Encyclopedia of Integer Sequences,
+revision 19, January 31, 2026; Mathar's FORMULA conjecture dated January 29, 2026.
+\href{https://github.com/oeis/oeisdata/blob/4c6abcdf8b00fd262030066ebfced671457e5b43/seq/A392/A392976.seq}{Pinned entry, lines 5--9}.
+\bibitem{gessel}
+I.\ M.\ Gessel, \emph{Lagrange inversion},
+\href{https://arxiv.org/abs/1609.05988v1}{arXiv:1609.05988v1} (2016),
+Theorem 2.1.1, equation (2.1.1).
+\bibitem{oeis3}
+S.\ Manyama and contributors, \emph{A392977}, OEIS,
+revision 16, January 31, 2026.
+\href{https://github.com/oeis/oeisdata/blob/4c6abcdf8b00fd262030066ebfced671457e5b43/seq/A392/A392977.seq}{Pinned entry}.
+\bibitem{oeis1}
+N.\ J.\ A.\ Sloane and contributors, \emph{A001002}, OEIS,
+revision 183, February 11, 2026; binomial formula attributed to P.\ D.\ Hanna,
+March 30, 2005.
+\href{https://github.com/oeis/oeisdata/blob/4c6abcdf8b00fd262030066ebfced671457e5b43/seq/A001/A001002.seq}{Pinned entry}.
+\bibitem{oeism1}
+S.\ Manyama, \emph{A370839}, OEIS,
+revision 11, March 3, 2024.
+\href{https://github.com/oeis/oeisdata/blob/4c6abcdf8b00fd262030066ebfced671457e5b43/seq/A370/A370839.seq}{Pinned entry}.
+\bibitem{lean}
+\emph{A392976InverseRecurrence.lean}, source revision\\
+\texttt{2b5b552e72596710282b713f6587c7020544535d}.
+\href{https://github.com/the-omega-institute/trureturing/blob/2b5b552e72596710282b713f6587c7020544535d/D5/S1/Recurrence/Algebraic/A392976InverseRecurrence.lean}{Pinned Lean declarations}.
+\end{thebibliography}
+
+\medskip\noindent\footnotesize
+\copyright\ 2026 Haobo Ma and Wenlin Zhang.
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).
+OEIS entry material is attributed to the OEIS Foundation and its named
+contributors; the cited entries are available under CC BY-SA 4.0.
+\end{document}

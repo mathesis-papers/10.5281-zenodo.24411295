@@ -1,0 +1,15 @@
+{
+  "id": "oeis-a392976-inverse-recurrence",
+  "revision": 2,
+  "problem_ids": ["oeis-a392976-inverse-recurrence"],
+  "topic": "Mathar's six-term recurrence, an order-at-most-four differential equation, and inverse-family formulas for OEIS A392976",
+  "title": "Mathar's inverse-quintic recurrence conjecture and extensions of Barry's cubic formulas",
+  "creators": [
+    {"name": "Ma, Haobo", "affiliation": "ChronoAI Pte Ltd, Singapore"},
+    {"name": "Zhang, Wenlin", "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore"}
+  ],
+  "abstract": "We prove R. J. Mathar's 'Conjecture D-finite with recurrence' in the third FORMULA line of OEIS A392976, revision 19 (January 31, 2026; conjecture dated January 29, 2026), and extend the cubic coefficient identities proved by Barry (2011, Theorem 3 and Example 7). The coefficients of the formal inverse of t((1-t^2)^2-t), divided by x, satisfy the stated six-term recurrence at every integer n >= 5. A change of variable reduces the assertion to an explicit polynomial identity. The same argument gives a nonzero homogeneous differential equation of order five; a trace argument lowers the existence bound to order four. Lagrange inversion gives an integer-exponent family containing the entry's binomial-sum formula and its three cross-referenced sequences, as well as all positive integral powers of their generating functions. Further corollaries cover the cubic entry's alternate sum, differential recurrence and derivative formulas.",
+  "summary": "The exact six-term recurrence holds for every n >= 5, with initial values 1, 1, 4, 15, 67. A trace-zero argument proves existence of a homogeneous differential equation of order at most four, without asserting an exact minimal order. The family f_r(t)=t((1-t^2)^r-t) has integral inverse coefficients and algebraic, D-finite quotient series for every integer r; positive integral powers have an explicit generalized-binomial formula. Positivity holds for r >= 0. The A001002 formulas are reproved with credit to Barry (2011), Schuetz and Whieldon (2014), Birmajer, Gil and Weiner (2015), and Liszewska and Mlotkowski (2019). Additional written corollaries cover cubic recurrence, derivative, reciprocal, logarithmic-derivative and hypergeometric identities. The denominator in Barry's displayed trigonometric formula is corrected from 6 to 16, agreeing with OEIS.",
+  "license": "cc-by-4.0",
+  "evidence_url": "https://github.com/the-omega-institute/trureturing/blob/2b5b552e72596710282b713f6587c7020544535d/D5/S1/Recurrence/Algebraic/A392976InverseRecurrence.lean"
+}

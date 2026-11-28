@@ -31,6 +31,7 @@
     "concept_doi": "10.5281/zenodo.24411295",
     "current_version": 2,
     "doi": "10.5281/zenodo.24411296",
+    "kind": "note",
     "lean_source": {
       "revision": "2b5b552e72596710282b713f6587c7020544535d",
       "url": "https://github.com/the-omega-institute/trureturing/blob/2b5b552e72596710282b713f6587c7020544535d/D5/S1/Recurrence/Algebraic/A392976InverseRecurrence.lean"
@@ -55,10 +56,12 @@
     "title": "Mathar's inverse-quintic recurrence conjecture and extensions of Barry's cubic formulas",
     "versions": [
       {
+        "changelog": null,
         "previous_version": null,
         "published_on": "2026-11-23T05:40:02.127157100Z",
         "revision": "2",
-        "version": 2
+        "version": 2,
+        "version_label": null
       }
     ],
     "work": "oeis-a392976-inverse-recurrence"
